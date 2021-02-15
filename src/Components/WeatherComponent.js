@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const WeatherComponent = (props) => {
 
     const {background,temperature,humidity,date,city} = props;

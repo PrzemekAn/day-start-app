@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
 import WeatherComponent from './WeatherComponent';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
+import Navigation from './Navigation';
+import Todo from './Todo'
+import Home from './Home'
 
 const api = {
   key:'3df22446f8b0ba135cf066f0ba035bf2',
@@ -13,6 +17,7 @@ class App extends Component {
       background: '',
       date: '',
       humidity: '',
+      wasClicked: false,
     }
   
 
@@ -78,20 +83,36 @@ class App extends Component {
 
   }
 
+
+  menuActive = () => {
+    this.setState({
+      wasClicked: !this.state.wasClicked,
+    })
+  }
+
   render(){
-    // console.log(this.state.temperature)
   return (
-    
+    <Router>
     <div className="App">
-      {/* <main className = {'wrapper' + this.state.background}>
-          <input type="text" placeholder = 'Search...' className = 'location-search' onChange = {this.changeHandler.bind(this)} onKeyUp = {this.searchSubmit}/>
-          <div className="location-info">{this.state.city}</div>
-          <div className="date">{this.state.date}</div>
-          <div className="weather-data temperature">{this.state.temperature}<sup>o</sup>C</div>
-          <div className="weather-data humidity">{this.state.humidity}%</div>
-      </main> */}
+      <Navigation clickEv = {this.menuActive} isClicked = {this.state.wasClicked}/>
+
+
+
+      {/* todo - home page with basic informations about app and tips how to use */}
+
+      <Route path = '/' exact>
+      <Home/>
+      </Route>
+
+      <Route path = '/weather'>
       <WeatherComponent {...this.state} click = {this.searchSubmit} change = {this.changeHandler.bind(this)} />
+      </Route>
+
+      <Route path = '/todo'>
+        <Todo/>
+      </Route>
     </div>
+    </Router>
   );
   }
 }
