@@ -1,8 +1,9 @@
-import React, { createFactory } from 'react';
+import React from 'react';
+import './Home.css'
 
 const Home = () => {
     return ( 
-        <div>
+        <div className='home-page'>
             <p className = 'hp'>Home Page</p>
         </div>
 

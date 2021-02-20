@@ -12,6 +12,7 @@ const Navigation = (props) => {
                 <li className = 'list-item'><Link to = '/'><i class="fas fa-home"></i>Home</Link></li>
                 <li className = 'list-item'><Link to = '/weather'><i class="fas fa-cloud"></i>Weather</Link></li>
                 <li className = 'list-item'><Link to = '/todo'><i class="fas fa-clipboard-list"></i> ToDo</Link></li>
+                <li className = 'list-item'><Link to = '/news'><i class="fas fa-newspaper"></i> News</Link></li>
             </ul>
         </div>
 

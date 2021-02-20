@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const WeatherComponent = (props) => {
+const WeatherPage = (props) => {
 
     const {background,temperature,humidity,date,city} = props;
     return ( 
@@ -24,4 +24,4 @@ const WeatherComponent = (props) => {
      );
 }
  
-export default WeatherComponent;
+export default WeatherPage;

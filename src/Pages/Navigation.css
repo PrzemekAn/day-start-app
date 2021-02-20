@@ -6,6 +6,7 @@
     background-color: rgb(255, 255, 255, .7);
     left: -300px;
     transition: .3s;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .5);
 }
 
 .active {
@@ -17,11 +18,11 @@
     right: 0;
     transform: translateX(99%);
     background-color: rgb(255, 255, 255, .7);
-    ;
     font-size: 20px;
     padding: 15px;
     cursor: pointer;
     border-radius: 0 5px 5px 0;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, .5);
 }
 
 .navigation ul {
@@ -35,7 +36,6 @@
 
 .navigation ul li {
     margin: 20px 0;
-    /* padding: 10px; */
     font-size: 20px;
     display: block;
     width: 100%;

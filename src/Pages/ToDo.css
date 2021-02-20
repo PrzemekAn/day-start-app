@@ -1,0 +1,116 @@
+.todoComp {
+    width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(to right, #74ebd5, #ACB6E5);
+    background-repeat: repeat;
+    padding-top: 50px;
+    box-sizing: border-box;
+}
+
+.add-task-container {
+    width: 500px;
+    margin: auto;
+    /* background-color: black; */
+    text-align: center;
+}
+
+#addTask {
+    height: 20px;
+    width: 300px;
+    padding: 5px 10px;
+    font-size: 17px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .3);
+}
+
+#taskDate {
+    display: inline-block;
+    height: 20px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .3);
+}
+
+.add-task-button {
+    /* height: 30px; */
+    padding: 8px 10px;
+    /* width: 70px; */
+    margin-left: 10px;
+    /* background-color: rgba(65, 105, 225, .4); */
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .5);
+    color: white;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 17px;
+    box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, .3);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.tasks {
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* width: 500px; */
+}
+
+.todo {
+    padding: 5px;
+    border-bottom: 1px solid white;
+}
+
+.todo .task .task-name {
+    font-weight: 600;
+}
+
+.completed {
+    padding: 5px;
+    margin-top: 20px;
+    border-bottom: 1px solid white;
+}
+
+.task {
+    min-width: 250px;
+    /* background-color: bisque; */
+    /* display: flex; */
+    justify-content: space-around;
+    margin: 15px auto;
+}
+
+.task>* {
+    display: inline-block;
+    margin: 5px 10px;
+}
+
+.task-name {
+    font-size: 17px;
+}
+
+.task-date {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.btn {
+    width: 23px;
+    height: 23px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, .4);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.btn i {
+    /* dzieki temu i nie jest klikalne i tylko button jest */
+    pointer-events: none;
+}
