@@ -1,11 +1,13 @@
 import React from 'react';
+import '../Styles/NewsPage.css'
 
-const News = () => {
+const News = (props) => {
     return ( 
         <div className="news">
-            <p className="news-title">Wiadomość</p>
-            <p className="newst-date">2021.02.20</p>
-            <p className="news-summary">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus accusamus ut ipsa eos cupiditate illum quam inventore accusantium temporibus totam fugit vitae neque, quos repudiandae voluptatibus et tempora! Reiciendis, sequi!</p>
+            <p className="news-title">{props.title}</p>
+            <p className="news-date">{props.published_date}</p>
+            <p className="news-summary">{props.summary}</p>
+            <a className="detail"href = {props.link} target = '_blank'>{props.link}</a>
         </div>
      );
 }

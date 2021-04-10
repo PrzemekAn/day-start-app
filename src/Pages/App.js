@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import './App.css';
+import '../Styles/App.css';
 import WeatherPage from './WeatherPage';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 import Navigation from './Navigation';
 import Todo from './Todo';
 import Home from './Home';
 import NewsPage from './NewsPage';
+import TransportPage from './TransportPage';
 
 
 const api = {
@@ -13,19 +14,18 @@ const api = {
   key:'3df22446f8b0ba135cf066f0ba035bf2',
   base:'https://api.openweathermap.org/data/2.5/'
 }
-// const newsApi = {
-//   topics: ['tech','science','finance','business','politics','economics','ecology','engineering']
-
-// }
 
 class App extends Component {
     state = {
+      // weather
       temperature: '',
       city: 'Poznań',
       background: '',
       date: '',
       humidity: '',
+      // navigation
       wasClicked: false,
+      // todo
       tasks: [
           {name:'Zrobić pranie', date: '2021-03-01',active:true,priority:'low', id: 1, executionDate:null},
           {name:'Pozmywać', date:'2021-03-05',active:false,priority:'high', id:2, executionDate:'2020-06-17'},
@@ -34,7 +34,9 @@ class App extends Component {
       ],
       newTaskName:'',
       newTaskDate:'',
+      // news
       newsSearchInputValue: '',
+      news: [],
     }
   
 // weather page
@@ -81,7 +83,6 @@ class App extends Component {
   
   componentDidMount(){
     this.getWeather();
-    // this.getNews();
   }
 
   changeHandler(e) {
@@ -172,6 +173,12 @@ class App extends Component {
 
   // news paage
 
+  newsSearchInputChangeHandler = (e) => {
+    this.setState({
+      newsSearchInputValue: e.target.value,
+    })
+  }
+
   getNews = () => {
     fetch(`https://newscatcher.p.rapidapi.com/v1/search_free?q=${this.state.newsSearchInputValue}&lang=en&media=True`, {
       "method": "GET",
@@ -181,9 +188,28 @@ class App extends Component {
       }
     })
     .then(response => response.json())
-    .then(res => console.log(res))
-    
+    .then(res => {
+      const news = [];
+      for(let i = 0; i < 10; i++ ){
+        news.push(res.articles[i]);
+      }
+      this.setState({
+        news: news
+      })
+      console.log(news)
+    })
+    .catch(err => console.error(err))
   }
+
+
+  //transport page
+
+  getTransport = () => {
+    fetch(`https://jakdojade.pl/krakow/trasa/z--Dworzec-Główny-Zachód--do--Wawel?fn=Dworzec Główny Zachód&tn=Wawel`,
+    {method: 'GET'})
+    .then(res => console.log(res))
+  }
+
 
   render(){
   return (
@@ -204,7 +230,12 @@ class App extends Component {
       </Route>
 
       <Route path = '/news'>
-        <NewsPage newsSearchTopic = {this.state.newsSearchInputValue}/>
+        <NewsPage newsSearchTopic = {this.state.newsSearchInputValue} changeHandler = {this.newsSearchInputChangeHandler} getNews = {this.getNews} news = {this.state.news}/>
+      </Route>
+
+      <Route path = '/transport'>
+        <TransportPage getTransport = {this.getTransport}/>
+
       </Route>
     </div>
     </Router>

@@ -1,5 +1,5 @@
 import React from 'react';
-import './ToDo.css';
+import '../Styles/ToDo.css';
 import Task from '../Components/Task'
 
 const Todo = (props) => {
